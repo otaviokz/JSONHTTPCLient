@@ -5,7 +5,7 @@ import Foundation
 
 @available(iOS 13.0.0, *)
 public protocol JSONHTTPClientType {
-    func get<T: Decodable>(_ url: URL, headers httpHeaders: [String: String]?) async throws -> T
+    func get<T: Decodable>(_ url: URL, httpHeaders: [String: String]?) async throws -> T
     func postJSON<T: Decodable>(_ url: URL, body: Data, httpHeaders: [String: String]?) async throws -> T
 }
 
@@ -15,7 +15,7 @@ public struct JSONHTTPClient: JSONHTTPClientType {
     
     private init() {}
     
-    public func get<T: Decodable>(_ url: URL, headers httpHeaders: [String: String]?) async throws -> T {
+    public func get<T: Decodable>(_ url: URL, httpHeaders: [String: String]?) async throws -> T {
         try await connect(.get(url).headers(httpHeaders))
         
     }
