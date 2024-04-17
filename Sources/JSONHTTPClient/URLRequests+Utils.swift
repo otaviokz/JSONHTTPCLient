@@ -35,7 +35,7 @@ extension URLRequest {
     
     @inlinable func headers(_ headers: [String: String]?) -> Self {
         guard let headers = headers else { return self }
-        var new = self//editable()
+        var new = self
         for (field, value) in headers {
             new.setValue(value, forHTTPHeaderField: field)
         }
